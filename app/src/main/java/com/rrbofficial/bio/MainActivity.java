@@ -10,12 +10,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.rrbofficial.bio.data.Bio;
 import com.rrbofficial.bio.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private EditText enterHobbies;
     private ActivityMainBinding binding;
     private TextView hobbies;
+
+    private  final Bio bio = new Bio();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,16 +28,23 @@ public class MainActivity extends AppCompatActivity {
 
 
             binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+            bio.setName("ABC name");
+
+
+            binding.setBio(bio);
             binding.doneButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     addHobbies(view);
                 }
             });
+
     }
 
     public void addHobbies(View view) {
-        binding.hobbiesText.setText(String.format("Hobbies:%s", binding.enterHobbies.getText().toString().trim()));
+        bio.setHobbies(String.format("Hobbies:%s", binding.enterHobbies.getText().toString().trim()));
+
+//        binding.hobbiesText.setText(String.format("Hobbies:%s", binding.enterHobbies.getText().toString().trim()));
         binding.invalidateAll();  // to refresh our user interface, cleaning up the data binding
         binding.hobbiesText.setVisibility(View.VISIBLE);
 //        hobbies.setText(String.format("Hobbies:%s", enterHobbies.getText().toString().trim()));
