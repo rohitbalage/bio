@@ -174,5 +174,6 @@ this is a new string and new bio this is a new string and new bio this is a new 
 
     </string>
         <string name="hobby_hint_Text">Enter here your hobies</string>
-        <string name="done_Text">Done</string>>
+        <string name="done_Text">Done</string>
+        <string name="iamge_description">android robot image\n</string>>
 </resources>
